@@ -25,7 +25,7 @@
             <!-- 登录模块 -->
             <div class="login-box submit-box">
                 <!-- 登录的表单 -->
-                <form class="layui-form" action="">
+                <form class="layui-form" id="form_login">
                     <!-- 用户名框 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-username"></i>
@@ -53,7 +53,7 @@
             <!-- 注册模块 -->
             <div class="reg-box submit-box">
                 <!-- 注册的表单 -->
-                <form class="layui-form" action="">
+                <form class="layui-form" id="form_reg">
                     <!-- 用户名框 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-username"></i>
@@ -63,14 +63,14 @@
                     <!-- 密码框 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-password"></i>
-                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                        <input type="password" name="password" required lay-verify="required|pwd" placeholder="请输入密码"
                             autocomplete="off" class="layui-input">
                     </div>
                     <!-- 密码确认框 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-password"></i>
-                        <input type="password" name="repassword" required lay-verify="required" placeholder="请再次输入密码"
-                            autocomplete="off" class="layui-input">
+                        <input type="password" name="repassword" required lay-verify="required|pwd|repwd"
+                            placeholder="请再次输入密码" autocomplete="off" class="layui-input">
                     </div>
                     <!-- 注册按钮 -->
                     <div class="layui-form-item">
@@ -91,7 +91,8 @@
     <script src="./assets/lib/layui/layui.all.js"></script>
     <!-- 导入 jQuery 文件 -->
     <script src="./assets/lib/jquery.js"></script>
-
+    <!-- 导入我们自己封账的 baseAPI  -->
+    <script src="./assets/js/baseAPI.js"></script>
     <!-- 导入自己 javascript 脚本 -->
     <script src="./assets/js/login.js"></script>
 </body>
