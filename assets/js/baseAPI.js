@@ -12,4 +12,16 @@ $.ajaxPrefilter(function (options) {
         };
     }
 
+    //全局同意挂载 complete函数
+    // 无论成功还是失败，都会调用 complete函数
+    options.complete = function (res) {
+        if (res.responseJSON.code === 1 && res.responseJSON.message === "身份认证失败！") {
+            //清空 token 数据 防止坏蛋手写一个token
+            localStorage.removeItem('token');
+            //强制跳回登录页面
+            location.href = '/login.html'
+        }
+        console.log(res);
+    }
+
 })
