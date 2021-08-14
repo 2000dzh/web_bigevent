@@ -34,25 +34,41 @@ $(function () {
 })
 
 //监听注册表单的提交事件
+// $("#form_reg").on('submit', function (e) {
+//     //阻止表单默认行为
+//     e.preventDefault()
+//     //发起Ajax的POST请求
+//     $.post('/api/reg',
+//         {
+//             username: $("#form_reg [name=username]").val(),
+//             password: $("#form_reg [name=password]").val(),
+//             repassword: $("#form_reg [name=repassword").val()
+
+//         },
+//         function (res) {
+//             console.log(res);
+//             if (res.code !== 0) return layer.msg(res.message);
+//             layer.msg('注册成功');
+//             //注册成功 自动跳到登录模块
+//             $("#link_login").click()
+//         }
+//     )
+// })
+
 $("#form_reg").on('submit', function (e) {
-    //阻止表单默认行为
     e.preventDefault()
-    //发起Ajax的POST请求
-    $.post('/api/reg',
-        {
-            username: $("#form_reg [name=username]").val(),
-            password: $("#form_reg [name=password]").val(),
-            repassword: $("#form_reg [name=repassword").val()
-        },
-        function (res) {
-            console.log(res);
+    $.ajax({
+        method: 'POST',
+        url: '/api/reg',
+        data: $(this).serialize(),
+        success: function (res) {
             if (res.code !== 0) return layer.msg(res.message);
             layer.msg('注册成功');
-            //注册成功 自动跳到登录模块
             $("#link_login").click()
         }
-    )
+    })
 })
+
 
 // 监听登录表单的提交事件
 $("#form_login").submit(function (e) {
